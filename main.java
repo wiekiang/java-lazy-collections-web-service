@@ -37,8 +37,9 @@ class Interest {
     private String name; 
     
     @ManyToMany(mappedBy = "interests")
-
-    private List<Person> people = new ArrayList(); public void addPerson(Person person) {
+    private List<Person> people = new ArrayList(); 
+    
+    public void addPerson(Person person) {
         this.people.add(person);
 
         if (!person.getInterests().contains(this)) { 
@@ -57,8 +58,10 @@ class Person {
 
     @ManyToMany 
     private List<Interest> interests = new ArrayList(); 
+
     public void addInterest(Interest interest) {
         this.interests.add(interest);
+    
         if (!interest.getPeople().contains(this)) { 
             interest.addPerson(this);
         }
